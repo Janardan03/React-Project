@@ -19,7 +19,7 @@ const Body = () => {
     const fetchData = async () => {
         
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.61450&lng=77.30630&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-        json = await data.json();
+        const json = await data.json();
 
         console.log(json);
         setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -35,7 +35,10 @@ const Body = () => {
         <div className="body">
             <div className="filter flex">
                 <div className="m-3 p-3">
-                    <input type="text" className="border-solid border-black border-2 rounded-lg" value={searchText} onChange={(event) => {
+                    <input 
+                        type="text" 
+                        data-testid="searchInput"
+                        className="border-solid border-black border-2 rounded-lg" value={searchText} onChange={(event) => {
                         setSearchText(event.target.value);
                     }}/>
                     <button className="px-4 py-1 m-2 bg-red-400 rounded-lg"

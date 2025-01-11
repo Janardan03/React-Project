@@ -9,7 +9,7 @@ const RestaurantMenu = () => {
     const {resId} = useParams();  // destructure on the fly
     const resInfo = useRestaurantMenu(resId); // this is a custom hook
 
-    const [showIndex, setShowIndex] = useState(0);
+    const [showIndex, setShowIndex] = useState(null);
 
     if(resInfo === null)
         return <Shimmer />;
